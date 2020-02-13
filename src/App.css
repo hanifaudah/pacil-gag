@@ -1,38 +1,162 @@
-.App {
+/* General */
+html, body {
+  letter-spacing: 1px;
+}
+
+div.main {
+  overflow: hidden;
+  background: #14062F;
+  padding: 2em 5em;
+  height: 400vh;
+}
+/* Nav */
+nav {
+  background: #302858;
+}
+
+div.collapse {
+  background: #302858;
+  width: 50%;
+  z-index: 1;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  border:none;
+}
+
+.burger {
+  border:3px solid white;
+  border-radius:10px;
+  width:2em;
+  margin: 8px 0;
+}
+
+.search-form {
+  width: 50%;
+}
+
+.search-bar {
+  background: #FFFFFF;
+  border-radius: 6px;
+  width:100%;
+  outline:none;
+  border:none;
+  padding: .3em 1em;
+}
+
+@media (max-width:992px){
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-form {
+    width: 100%;
+    margin: .5em 0;
+  }
+
+  a.link {
+    margin: .5em 0;
+  }
+}
+
+.logo {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 2em;
+  line-height: 33px;
   text-align: center;
+
+  
+  background: linear-gradient(90deg, #EC006A -2.41%, #992F8B 98.62%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  margin: 0 1em;
+  text-align: left;
+
+  color: #FFFFFF !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Panel */
+.meme-img {
+  width:22em;
+  height: auto;
+  border-radius:10px;
+  z-index: 2;
+}
+
+.meme-img:hover ~ .meme-img {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.meme-img:hover ~ .meme-details {
+  display:flex;
+}
+
+.panel {
+  position: relative;
+  object-fit: cover;
+  margin: 1em 1em;
+  position:relative;
+  transition: all .3s;
+}
+
+.panel:hover {
+  transition: all .3s;
+  z-index: 3;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2)
+}
+
+.meme-details {
+  background: linear-gradient(180deg, #312759, #3D1466);
+  color:white;
+  width:22em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding:1em;
+  display:flex;
+}
+
+.meme-details h1 {
+  font-family: Roboto;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.meme-details h1 {
+  font-weight: 500;
+}
+
+.meme-details h4 {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+@media (max-width:1200px){
+  .meme-img, .meme-details {
+    width: 18em;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width:992px){
+  .meme-img, .meme-details {
+    width: 14em;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (max-width:576px){
+  .meme-img, .meme-details {
+    width: 10em;
   }
 }
