@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import Panel from "./Panel";
+// import {useParams} from "react-router-dom"
 
 export class Discover extends Component {
     render() {
         return (
-            <div className="main d-flex flex-column flex-wrap">
-                {this.props.memes.map((meme)=>(
-                    <Panel key={meme.url} meme={meme}/>
-                ))}
-            </div>
+            <React.Fragment>
+
+                <div className="main">
+                    <div className="card-columns">
+                        {this.props.memes.map((meme)=>(
+                            <Panel saved={false} key={meme.url} meme={meme}/>
+                        ))}
+                    </div>
+                </div>
+        
+            </React.Fragment>
+            
         )
     }
 }

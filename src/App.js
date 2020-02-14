@@ -7,8 +7,6 @@ import Discover from "./components/Discover.js";
 import Saved from "./components/Saved.js";
 
 // Bootstrap
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import React, { Component } from 'react'
@@ -16,17 +14,27 @@ import React, { Component } from 'react'
 export class App extends Component {
   state={
     memes:[],
-    saved:[],
   }
   componentDidMount() {
     axios.get("http://meme-api.herokuapp.com/gimme/15")
     .then(res => this.setState({memes:res.data.memes}))
   }
+
+  // search = (keyword) => {
+  //   let res = []
+  //   let {memes} = this.state
+  //   for(let i=0; i<memes.length;i++){
+  //     if(memes[i].title.search(keyword)!==-1){
+  //       res.push(memes[i])
+  //     }
+  //   }
+  //   return res;
+  // }
   render() {
     return (
       <React.Fragment>
         <Router>
-          <div>
+          <div className="">
             <Nav/>
             <Route exact path="/" render={props => (
               <React.Fragment>
@@ -38,6 +46,10 @@ export class App extends Component {
                 <Saved/>
               </React.Fragment>
             )}/>
+            {/* <Route path="/:keyword" render={props => (
+              <React.Fragment>
+                <Discover memes={this.search("z")}/>
+            </React.Fragment> */}
           </div>
         </Router>
       </React.Fragment>
