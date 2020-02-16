@@ -5,15 +5,15 @@ export class Panel extends Component {
         imgClass:"card-img-top",
         cardFooterClass:"card-footer justify-content-between",
         saved:this.props.saved,
-        bookmark:"far fa-bookmark mr-1 mt-1",
+        bookmark:"far fa-bookmark",
         id:this.props.meme.id,
     }
 
     componentDidMount() {
         if(this.state.saved){
-            this.setState({bookmark:"fas fa-bookmark mr-1 mt-1"})
+            this.setState({bookmark:"fas fa-bookmark"})
         } else {
-            this.setState({bookmark:"far fa-bookmark mr-1 mt-1"})
+            this.setState({bookmark:"far fa-bookmark"})
         }
     }
 
@@ -28,20 +28,22 @@ export class Panel extends Component {
     save = (e) => {
         let {meme} = this.props
         if(this.state.saved===true){
+            //If saved (change to unsave color)
             console.log(this.state.id)
             localStorage.removeItem(this.state.id)
-            this.setState({saved:false,id:null,bookmark:"far fa-bookmark mr-1 mt-1"})
+            this.setState({saved:false,id:null,bookmark:"far fa-bookmark"})
         } else {
+            // If not saved (change to save color)
             meme["id"]=meme.postLink.slice(16)
             console.log(meme.id + " saved")
-            this.setState({saved:true,id:meme.id,bookmark:"fas fa-bookmark mr-1 mt-1"})
+            this.setState({saved:true,id:meme.id,bookmark:"fas fa-bookmark"})
             localStorage.setItem(meme.id,JSON.stringify(meme))
         }
     }
 
     render() {
         return (
-            <div className="card" onMouseOver={this.in} onMouseOut={this.out}>
+            <div className="card my-1" onMouseOver={this.in} onMouseOut={this.out}>
                 <img src={this.props.meme.url} className={this.state.imgClass} alt="..."></img>
                 <div className={this.state.cardFooterClass} onMouseOver={this.in} onMouseOut={this.out}>
                     <div>

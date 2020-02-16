@@ -3,38 +3,65 @@ import Panel from "./Panel"
 
 export class Saved extends Component {
     state = {
-        memes : [],
+        memes1 : [],
+        memes2 : [],
+        memes3 : [],
     }
     componentDidMount() {
-        let temp = []
-        for(let i=0; i<localStorage.length;i++){
-            temp.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+        this.findMemes()
+    }
+
+    findMemes = () => {
+        let temp1 = []
+        let temp2 = []
+        let temp3 = []
+        let len = localStorage.length
+        for(let i=0; i<len;i+=3){
+            if(JSON.parse(localStorage.getItem(localStorage.key(i)))!==null) {temp1.push(JSON.parse(localStorage.getItem(localStorage.key(i))))}
+            if(JSON.parse(localStorage.getItem(localStorage.key(i+1)))!==null) {temp2.push(JSON.parse(localStorage.getItem(localStorage.key(i+1))))}
+            if(JSON.parse(localStorage.getItem(localStorage.key(i+2)))!==null) {temp3.push(JSON.parse(localStorage.getItem(localStorage.key(i+2))))}
         }
-        this.setState({memes:temp})
-        console.log(this.state.memes)
+        this.setState({memes1:temp1,memes2:temp2,memes3:temp3})
+        console.log(temp1, temp2, temp3)
     }
 
     componentDidUpdate() {
-        if(this.state.memes.length!==localStorage.length){
-            let temp = []
-            for(let i=0; i<localStorage.length;i++){
-                temp.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
-            }
-            this.setState({memes:temp})
+        let {memes1,memes2,memes3} = this.state
+        if(memes1.length+memes2.length+memes3.length!==localStorage.length){
+            this.findMemes()
         }
     }
 
     render() {
         return (
-            <div className="main">
-                <div className="card-columns">
-                    {this.state.memes.map((meme)=>(
-                        <Panel key={meme.id} saved={true} meme={meme}/>
-                    ))}
+            <div className="main px-3 px-md-5 pt-4">
+                <div className="d-flex flex-column align-items center mt-5">
+                    <h1 className="savedHeader">Saved Memed</h1>
+                    <h2 className="savedHeader">These are the memes that you love</h2>
+                </div>
+                <div className="row d-flex justify-content-center">
+                    <div className="col-4 pr-1 m-0 d-flex flex-column align-items-end">
+                        {this.state.memes1.length!==null && this.state.memes1.map((meme)=>(
+                            <Panel key={meme.id} saved={true} meme={meme}/>
+                        ))}
+                    </div>
+                    <div className="col-4 p-0 d-flex flex-column align-items-center">
+                        {this.state.memes2.length!==null && this.state.memes2.map((meme)=>(
+                            <Panel key={meme.id} saved={true} meme={meme}/>
+                        ))}
+                    </div>
+                    <div className="col-4 pl-1 m-0 d-flex flex-column align-items-start">
+                        {this.state.memes3.length!==null && this.state.memes3.map((meme)=>(
+                            <Panel key={meme.id} saved={true} meme={meme}/>
+                        ))}
+                    </div> 
                 </div>
             </div>
         )
     }
 }
+// {this.state.memes.map((meme)=>(
+//     <Panel key={meme.id} saved={true} meme={meme}/>
+// ))}
 
 export default Saved
