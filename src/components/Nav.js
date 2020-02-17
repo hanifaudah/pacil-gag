@@ -31,7 +31,7 @@ export class Nav extends Component {
                 <button onClick={this.changeIcon} id="burgerBtn" className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <div className={this.state.btn1}></div>
                     <div className={this.state.btn2}></div>
-                    <i class={this.state.icon}></i>
+                    <i className={this.state.icon}></i>
                 </button>
                 <div className="collapse navbar-collapse p-3 p-lg-0" id="navbarSupportedContent">
                     <form className="search-form ml-lg-auto p-0 pl-lg-5">

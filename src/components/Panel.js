@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import loading from "../loading.gif"
 export class Panel extends Component {
     state = {
         imgClass:"card-img-top",
         cardFooterClass:"card-footer justify-content-between",
         saved:this.props.saved,
         bookmark:"far fa-bookmark",
-        id:this.props.meme.id,
+        id:this.props.meme.postLink.slice(16),
     }
 
     componentDidMount() {
@@ -44,7 +46,7 @@ export class Panel extends Component {
     render() {
         return (
             <div className="card my-1" onMouseOver={this.in} onMouseOut={this.out}>
-                <img src={this.props.meme.url} className={this.state.imgClass} alt="..."></img>
+                <LazyLoadImage placeholderSrc={loading} src={this.props.meme.url} className={this.state.imgClass} alt="..."/>
                 <div className={this.state.cardFooterClass} onMouseOver={this.in} onMouseOut={this.out}>
                     <div>
                         <h1>{this.props.meme.title}</h1>

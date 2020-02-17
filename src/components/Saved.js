@@ -32,6 +32,10 @@ export class Saved extends Component {
         }
     }
 
+    checkKey = (s) => {
+        return s.title.search(this.props.keyword)!==-1;
+    }
+
     render() {
         return (
             <div className="main px-3 px-md-5 pt-4">
@@ -41,17 +45,17 @@ export class Saved extends Component {
                 </div>
                 <div className="row d-flex justify-content-center">
                     <div className="col-4 pr-1 m-0 d-flex flex-column align-items-end">
-                        {this.state.memes1.length!==null && this.state.memes1.map((meme)=>(
+                        {this.state.memes1.length!==null && this.state.memes1.filter(this.checkKey).map((meme)=>(
                             <Panel key={meme.id} saved={true} meme={meme}/>
                         ))}
                     </div>
                     <div className="col-4 p-0 d-flex flex-column align-items-center">
-                        {this.state.memes2.length!==null && this.state.memes2.map((meme)=>(
+                        {this.state.memes2.length!==null && this.state.memes2.filter(this.checkKey).map((meme)=>(
                             <Panel key={meme.id} saved={true} meme={meme}/>
                         ))}
                     </div>
                     <div className="col-4 pl-1 m-0 d-flex flex-column align-items-start">
-                        {this.state.memes3.length!==null && this.state.memes3.map((meme)=>(
+                        {this.state.memes3.length!==null && this.state.memes3.filter(this.checkKey).map((meme)=>(
                             <Panel key={meme.id} saved={true} meme={meme}/>
                         ))}
                     </div> 

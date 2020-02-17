@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-// import axios from 'axios';
 //Components
 import Nav from "./components/Nav.js";
 import Discover from "./components/Discover.js";
@@ -36,7 +35,7 @@ export class App extends Component {
             )}/>
             <Route path="/saved" render={props => (
               <React.Fragment>
-                <Saved/>
+                <Saved keyword={this.state.keyword}/>
               </React.Fragment>
             )}/>
           </div>
