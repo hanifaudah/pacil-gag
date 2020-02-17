@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 import loading from "../loading.gif"
+
+//Description:
+//This is the panel component where each individual meme is based on
+
 export class Panel extends Component {
     state = {
         imgClass:"card-img-top",

@@ -1,23 +1,31 @@
-// import logo from './logo.svg';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 //Components
 import Nav from "./components/Nav.js";
 import Discover from "./components/Discover.js";
 import Saved from "./components/Saved.js";
-
-// Bootstrap
-
-
 import React, { Component } from 'react'
+
+//Description:
+//This is the main component where all the other components are rendered
+
+//Component Structure:
+// App
+//   |
+//   |==> Nav
+//   |
+//   |==> Discover
+//   |       |
+//   |       |==> Panel
+//   |
+//   |==> Saved
+//           |
+//           |==> Panel
 
 export class App extends Component {
   state={
     keyword:"",
   }
-  // componentDidMount() {
-  //   axios.get("http://meme-api.herokuapp.com/gimme/15")
-  //   .then(res => this.setState({memes:res.data.memes}))
-  // }
+
   printKey = (s) => {
     this.setState({keyword:s})
   }

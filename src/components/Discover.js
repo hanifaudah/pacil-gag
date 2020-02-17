@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Panel from "./Panel";
 import axios from 'axios';
 
+//Description:
+//This is the Discover page component where you can find as many memes as you want
 
 export class Discover extends Component {
     state = {
@@ -11,11 +13,13 @@ export class Discover extends Component {
     }
 
     componentDidMount() {
+        //Requesting memes when scrolling
         window.addEventListener('scroll', this.addMemes);
         this.getMemes()
         this.render()
     }
 
+    //Get initial batch of memes
     getMemes = () => {
         axios.get("http://meme-api.herokuapp.com/gimme/memes/30")
         .then(res => this.setState({
@@ -25,9 +29,10 @@ export class Discover extends Component {
         }))
     }
 
+    //Load more memes
     addMemes = () => {
         let {memes1, memes2, memes3} = this.state
-        if(window.scrollY!==0 && Math.abs(window.scrollY%500)<=10 && this.props.keyword){
+        if(window.scrollY!==0 && Math.abs(window.scrollY%500)<=10 && this.props.keyword===""){
             axios.get("http://meme-api.herokuapp.com/gimme/memes/30")
             .then(res => this.setState({
                 memes1:memes1.concat(res.data.memes.slice(0,10)),
@@ -37,14 +42,17 @@ export class Discover extends Component {
         }
     }
 
+    //Removing duplicate memes
     unique = (value,index,self) => {
         return self.indexOf(value) === index;
     }
 
+    //Filtering memes for search
     checkKey = (s) => {
         return s.title.search(this.props.keyword)!==-1;
     }
 
+    // Rendering JSX
     render() {
         return (
             <React.Fragment>

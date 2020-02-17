@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import Panel from "./Panel"
 
+//Description:
+//This is the saved component that holds all the saved memes
+
 export class Saved extends Component {
     state = {
         memes1 : [],
         memes2 : [],
         memes3 : [],
     }
+
     componentDidMount() {
         this.findMemes()
     }
 
+    //Load saved memes from local storage
     findMemes = () => {
         let temp1 = []
         let temp2 = []
@@ -25,6 +30,7 @@ export class Saved extends Component {
         console.log(temp1, temp2, temp3)
     }
 
+    //Loading newly saved memes
     componentDidUpdate() {
         let {memes1,memes2,memes3} = this.state
         if(memes1.length+memes2.length+memes3.length!==localStorage.length){
@@ -32,10 +38,12 @@ export class Saved extends Component {
         }
     }
 
+    //Filtering memes for search
     checkKey = (s) => {
         return s.title.search(this.props.keyword)!==-1;
     }
 
+    //Rendering JSX
     render() {
         return (
             <div className="main px-3 px-md-5 pt-4">
@@ -64,8 +72,5 @@ export class Saved extends Component {
         )
     }
 }
-// {this.state.memes.map((meme)=>(
-//     <Panel key={meme.id} saved={true} meme={meme}/>
-// ))}
 
 export default Saved
