@@ -24,10 +24,12 @@ export class Panel extends Component {
 
     out = (e) => {
         this.setState({imgClass:"card-img-top",cardFooterClass:"card-footer justify-content-between"})
+        this.props.isHovered()
     }
 
     in = (e) => {
         this.setState({imgClass:"card-img-top border-transform",cardFooterClass:"card-footer justify-content-between transform"})
+        this.props.isHovered()
     }
 
     save = (e) => {

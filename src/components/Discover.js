@@ -42,6 +42,10 @@ export class Discover extends Component {
         }
     }
 
+    blind = () => {
+        this.props.isHovered()
+    }
+
     //Removing duplicate memes
     unique = (value,index,self) => {
         return self.indexOf(value) === index;
@@ -60,17 +64,17 @@ export class Discover extends Component {
                     <div className="row d-flex justify-content-center my-5">
                         <div className="col-4 pr-1 m-0 d-flex flex-column align-items-end">
                             {this.state.memes1.filter(this.checkKey).map((meme)=>(
-                                <Panel saved={false} key={meme.url} meme={meme}/>
+                                <Panel saved={false} key={meme.url} meme={meme} isHovered={this.blind}/>
                             ))}
                         </div>
                         <div className="col-4 p-0 d-flex flex-column align-items-center">
                             {this.state.memes2.filter(this.checkKey).map((meme)=>(
-                                <Panel saved={false} key={meme.url} meme={meme}/>
+                                <Panel saved={false} key={meme.url} meme={meme} isHovered={this.blind}/>
                             ))}
                         </div>
                         <div className="col-4 pl-1 m-0 d-flex flex-column align-items-start">
                             {this.state.memes3.filter(this.checkKey).map((meme)=>(
-                                <Panel saved={false} key={meme.url} meme={meme}/>
+                                <Panel saved={false} key={meme.url} meme={meme} isHovered={this.blind}/>
                             ))}
                         </div>
                     </div>

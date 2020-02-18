@@ -43,6 +43,11 @@ export class Saved extends Component {
         return s.title.search(this.props.keyword)!==-1;
     }
 
+    //Make the background dark when hovering meme
+    blind = () => {
+        this.props.isHovered()
+    }
+
     //Rendering JSX
     render() {
         return (
@@ -54,17 +59,17 @@ export class Saved extends Component {
                 <div className="row d-flex justify-content-center">
                     <div className="col-4 pr-1 m-0 d-flex flex-column align-items-end">
                         {this.state.memes1.length!==null && this.state.memes1.filter(this.checkKey).map((meme)=>(
-                            <Panel key={meme.id} saved={true} meme={meme}/>
+                            <Panel key={meme.id} saved={true} meme={meme} isHovered={this.blind}/>
                         ))}
                     </div>
                     <div className="col-4 p-0 d-flex flex-column align-items-center">
                         {this.state.memes2.length!==null && this.state.memes2.filter(this.checkKey).map((meme)=>(
-                            <Panel key={meme.id} saved={true} meme={meme}/>
+                            <Panel key={meme.id} saved={true} meme={meme} isHovered={this.blind}/>
                         ))}
                     </div>
                     <div className="col-4 pl-1 m-0 d-flex flex-column align-items-start">
                         {this.state.memes3.length!==null && this.state.memes3.filter(this.checkKey).map((meme)=>(
-                            <Panel key={meme.id} saved={true} meme={meme}/>
+                            <Panel key={meme.id} saved={true} meme={meme} isHovered={this.blind}/>
                         ))}
                     </div> 
                 </div>
